@@ -25,9 +25,13 @@ class BookingCubit extends Cubit<BookingState> {
     const SettingsScreen(),
   ];
   var selected = 0;
+
   void buttomNavigation(index) {
     selected = index;
     emit(ButtomNavigationState());
+    if(index==0){
+      chService(idUser: userData!.data!.id!);
+    }
   }
 
   RoomTypeModel? roomType;
@@ -72,6 +76,7 @@ class BookingCubit extends Cubit<BookingState> {
   }
 
   CellModel? roomCell;
+
   void getRoomsCell({
     required String idUser,
   }) {
@@ -91,6 +96,37 @@ class BookingCubit extends Cubit<BookingState> {
       }
       emit(GetCellErrorState());
     });
+  }
+
+  bool checkService = false;
+
+  bool chService({
+    required String idUser,
+  }) {
+    emit(CheckServicesLoadingState());
+    DioHelper.postData(url: "booking/requestDate", data: {
+      "userID": idUser,
+    }).then((value) {
+      emit(CheckServicesSuccessState());
+      if (value.data['status'] == 0) {
+        checkService = true;
+
+        print(value.data["message"].toString());
+        checkService=true;
+        return checkService;
+      } else {
+
+        print(value.data["message"].toString());
+        checkService=false;
+        return checkService;
+      }
+    }).catchError((error) {
+      if (kDebugMode) {
+        print(error);
+      }
+      emit(CheckServicesErrorState());
+    });
+    return checkService;
   }
 
   void addCell({

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kraba/core/utils/constant.dart';
 import 'package:kraba/home/booking_proccess/presentetion/controller/booking_cubit.dart';
 import 'package:kraba/home/booking_proccess/presentetion/screens/start.dart';
 import 'package:kraba/login_register/presentation/presentation/component/component.dart';
@@ -26,6 +27,13 @@ class LoginScreen extends StatelessWidget {
                 text: state.loginModel.message.toString(),
                 state: ToastState.SUCCESS,
               );
+              BookingCubit.get(context).buttomNavigation(0);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                      const StartScreen()));
+
             } else {
               showToast(
                 text: state.loginModel.message.toString(),
@@ -136,12 +144,7 @@ class LoginScreen extends StatelessWidget {
                                 email: emailAddress.text,
                                 password: password.text,
                               );
-                              BookingCubit.get(context).buttomNavigation(0);
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          const StartScreen()));
+
                             }
                           },
                           child: const Text(

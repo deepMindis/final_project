@@ -33,12 +33,12 @@ class ButtomNavBar extends StatelessWidget {
                   textColor: Colors.white,
                 ),
                 GButton(
-                  icon: Icons.favorite_border,
+                  icon: Icons.local_offer_outlined,
                   text: 'Offers',
                   textColor: Colors.white,
                 ),
                 GButton(
-                  icon: Icons.shop_outlined,
+                  icon: Icons.favorite,
                   text: 'cell',
                   textColor: Colors.white,
                 ),

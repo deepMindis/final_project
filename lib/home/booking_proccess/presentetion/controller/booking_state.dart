@@ -14,6 +14,12 @@ class RoomSuccessState extends BookingState {}
 
 class RoomErrorState extends BookingState {}
 
+class CheckServicesLoadingState extends BookingState {}
+
+class CheckServicesSuccessState extends BookingState {}
+
+class CheckServicesErrorState extends BookingState {}
+
 class AddCellLoadingState extends BookingState {}
 
 class AddCellSuccessState extends BookingState {}

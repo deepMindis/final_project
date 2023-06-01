@@ -3,6 +3,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kraba/core/utils/constant.dart';
 import 'package:kraba/home/booking_proccess/models/cell_model.dart';
 import 'package:kraba/home/booking_proccess/models/room_model.dart';
 import 'package:kraba/home/booking_proccess/presentetion/controller/booking_cubit.dart';
@@ -179,16 +180,27 @@ Widget listRoom(CellModel model, context) => SingleChildScrollView(
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      BookingCubit.get(context)
+                          .addCell(
+                          idRoom:
+                          BookingCubit.get(
+                              context)
+                              .rooms!
+                              .data[numRoom!]
+                              .id!,
+                          idUser: userData!
+                              .data!.id!);
+                    },
                     icon: Icon(Icons.favorite_border_outlined),
-                    iconSize: 45,
+                    iconSize: 38,
                     color: Colors.white,
                   ),
                 ),
                 Spacer(),
                 Container(
-                  width: 220,
-                  height: 60,
+                  width: 180,
+                  height: 50,
                   decoration: BoxDecoration(
                       color: Colors.deepOrange,
                       borderRadius: BorderRadius.circular(15)),
