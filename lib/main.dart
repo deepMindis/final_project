@@ -1,17 +1,18 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kraba/home/booking_proccess/presentetion/controller/booking_cubit.dart';
 import 'package:kraba/home/booking_proccess/presentetion/controller/booking_state.dart';
 import 'package:kraba/home/services/presentation/controller/service_cubit.dart';
-import 'package:kraba/home/services/presentation/screens/all_services.dart';
 import 'package:kraba/login_register/presentation/presentation/controller/cubit/hotel_login_cubit.dart';
+import 'package:kraba/login_register/presentation/presentation/screens/login_screen.dart';
 import 'core/dio/dio_helper.dart';
 import 'core/shared_preference/cache_helper.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
+  await Firebase.initializeApp();
   await CacheHelper.init();
   runApp(const MyApp());
 }
@@ -28,24 +29,25 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (BuildContext context) => HotelLoginCubit(),
-
-        ),BlocProvider(
-          create: (BuildContext context) => ServiceCubit()..getAllService()..getMeals(),
-
+        ),
+        BlocProvider(
+          create: (BuildContext context) => ServiceCubit()
+            ..getAllService()
+            ..getMeals()
+            ..getDrink()
+            ..getSandwich(),
         ),
       ],
       child: BlocConsumer<BookingCubit, BookingState>(
         listener: (context, state) {},
         builder: (context, satae) {
           return MaterialApp(
-
             title: 'HOTELLO',
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            home: AllServices(),
-
+            home: const LoginScreen(),
           );
         },
       ),

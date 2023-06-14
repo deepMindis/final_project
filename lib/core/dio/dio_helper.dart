@@ -6,7 +6,7 @@ class DioHelper {
   static init() {
     dio = Dio(
       BaseOptions(
-        baseUrl: 'http://192.168.1.13:3000/api/',
+        baseUrl: 'http://localhost:3000/api/',
         receiveDataWhenStatusError: true,
       ),
     );

@@ -1,13 +1,9 @@
 import 'dart:async';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kraba/core/shared_preference/cache_helper.dart';
-import 'package:kraba/core/utils/constant.dart';
 import 'package:kraba/home/booking_proccess/presentetion/controller/booking_cubit.dart';
 import 'package:kraba/home/booking_proccess/presentetion/controller/booking_state.dart';
-import 'package:kraba/home/booking_proccess/presentetion/screens/home.dart';
 import 'package:kraba/login_register/presentation/presentation/screens/login_screen.dart';
 
 class SplashView extends StatefulWidget {

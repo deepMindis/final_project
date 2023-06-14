@@ -1,4 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace, unused_import
+// ignore_for_file: sized_box_for_whitespace, unused_import, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -44,9 +44,9 @@ class _NewHomeState extends State<NewHome> {
       '$path/room7.jpeg',
       '$path/room8.jpeg'
     ];
-    return BlocConsumer<BookingCubit,BookingState>(
-      listener: (context,state){},
-      builder:(context,state)=> Scaffold(
+    return BlocConsumer<BookingCubit, BookingState>(
+      listener: (context, state) {},
+      builder: (context, state) => Scaffold(
         backgroundColor: const Color.fromARGB(255, 65, 19, 173),
         appBar: AppBar(
           actions: [
@@ -55,17 +55,19 @@ class _NewHomeState extends State<NewHome> {
               isSelected: false,
               disabledColor: Colors.grey,
               iconSize: 35.0,
-              onPressed: BookingCubit.get(context).checkService ==false ? null:(){
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            AllServices()));
-                showToast(
-                  text: "services available",
-                  state: ToastState.SUCCESS,
-                );
-              },
+              onPressed: BookingCubit.get(context).checkService == false
+                  ? null
+                  : () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  AllServices()));
+                      showToast(
+                        text: "services available",
+                        state: ToastState.SUCCESS,
+                      );
+                    },
               icon: const Icon(Icons.room_service_sharp),
             ),
           ],
@@ -77,7 +79,9 @@ class _NewHomeState extends State<NewHome> {
           title: DefaultTextStyle(
             textAlign: TextAlign.start,
             style: const TextStyle(
-                color: Colors.white, fontSize: 25.0, fontWeight: FontWeight.bold),
+                color: Colors.white,
+                fontSize: 25.0,
+                fontWeight: FontWeight.bold),
             child: AnimatedTextKit(
               animatedTexts: [
                 TypewriterAnimatedText('Hotelo App'),
@@ -153,8 +157,10 @@ class _NewHomeState extends State<NewHome> {
                               .roomType!
                               .data[index]
                               .id!);
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => const Rooms()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Rooms()));
                     },
                     child: Container(
                       width: 40,
@@ -169,8 +175,8 @@ class _NewHomeState extends State<NewHome> {
                             color: Colors.black.withOpacity(0.1),
                             spreadRadius: 1,
                             blurRadius: 1,
-                            offset:
-                                const Offset(1, 1), // changes position of shadow
+                            offset: const Offset(
+                                1, 1), // changes position of shadow
                           ),
                         ],
                       ),
@@ -209,7 +215,8 @@ class _NewHomeState extends State<NewHome> {
                           ),
                           Center(
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(
                                 BookingCubit.get(context)
                                     .roomType!
@@ -311,7 +318,7 @@ class _NewHomeState extends State<NewHome> {
                               const SizedBox(
                                 width: 10,
                               ),
-                              const Expanded(
+                              Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -352,7 +359,8 @@ class _NewHomeState extends State<NewHome> {
                                           child: Text(
                                             '5',
                                             style: TextStyle(
-                                                fontSize: 12, color: Colors.grey),
+                                                fontSize: 12,
+                                                color: Colors.grey),
                                           ),
                                         ),
                                         Text(

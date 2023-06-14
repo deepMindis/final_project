@@ -22,9 +22,9 @@ class ServiceData {
   ServiceData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     photo = json['photo'];
-    name = json['name'];
+    name = json['serv_name'];
     start = json['start_in'];
     end = json['end_in'];
-    price=json['price'];
+    price = json['price'];
   }
 }

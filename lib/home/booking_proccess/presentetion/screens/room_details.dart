@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, sized_box_for_whitespace, prefer_const_literals_to_create_immutables, sort_child_properties_last
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, sized_box_for_whitespace, prefer_const_literals_to_create_immutables, sort_child_properties_last, unused_import, must_be_immutable
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -181,16 +181,12 @@ Widget listRoom(CellModel model, context) => SingleChildScrollView(
                   ),
                   child: IconButton(
                     onPressed: () {
-                      BookingCubit.get(context)
-                          .addCell(
-                          idRoom:
-                          BookingCubit.get(
-                              context)
+                      BookingCubit.get(context).addCell(
+                          idRoom: BookingCubit.get(context)
                               .rooms!
                               .data[numRoom!]
                               .id!,
-                          idUser: userData!
-                              .data!.id!);
+                          idUser: userData!.data!.id!);
                     },
                     icon: Icon(Icons.favorite_border_outlined),
                     iconSize: 38,

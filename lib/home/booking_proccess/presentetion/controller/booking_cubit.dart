@@ -1,10 +1,11 @@
+// ignore_for_file: body_might_complete_normally_catch_error
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kraba/core/dio/dio_helper.dart';
 import 'package:kraba/core/utils/constant.dart';
 import 'package:kraba/home/booking_proccess/models/cell_model.dart';
-import 'package:kraba/home/booking_proccess/models/room_model.dart';
 import 'package:kraba/home/booking_proccess/models/room_type_model.dart';
 import 'package:kraba/home/booking_proccess/presentetion/controller/booking_state.dart';
 import 'package:kraba/home/booking_proccess/presentetion/screens/adds.dart';
@@ -29,7 +30,7 @@ class BookingCubit extends Cubit<BookingState> {
   void buttomNavigation(index) {
     selected = index;
     emit(ButtomNavigationState());
-    if(index==0){
+    if (index == 0) {
       chService(idUser: userData!.data!.id!);
     }
   }
@@ -111,13 +112,16 @@ class BookingCubit extends Cubit<BookingState> {
       if (value.data['status'] == 0) {
         checkService = true;
 
-        print(value.data["message"].toString());
-        checkService=true;
+        if (kDebugMode) {
+          print(value.data["message"].toString());
+        }
+        checkService = true;
         return checkService;
       } else {
-
-        print(value.data["message"].toString());
-        checkService=false;
+        if (kDebugMode) {
+          print(value.data["message"].toString());
+        }
+        checkService = false;
         return checkService;
       }
     }).catchError((error) {
@@ -168,9 +172,13 @@ class BookingCubit extends Cubit<BookingState> {
       );
       roomCell = null;
       getRoomsCell(idUser: userData!.data!.id!);
-      print(value.data["message"].toString());
+      if (kDebugMode) {
+        print(value.data["message"].toString());
+      }
     }).catchError((error) {
-      print(error);
+      if (kDebugMode) {
+        print(error);
+      }
 
       emit(DeleteCellErrorState());
     });
@@ -198,9 +206,13 @@ class BookingCubit extends Cubit<BookingState> {
         state: ToastState.SUCCESS,
       );
 
-      print(value.data["message"].toString());
+      if (kDebugMode) {
+        print(value.data["message"].toString());
+      }
     }).catchError((error) {
-      print(error);
+      if (kDebugMode) {
+        print(error);
+      }
 
       emit(UpdateDataErrorState());
     });
