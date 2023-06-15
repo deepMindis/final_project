@@ -3,7 +3,7 @@
 //  Stripe.publishableKey = stripePublishKey;
  //  await Stripe.instance.applySettings(); 
 
-
+// pk_live_51NEW7iFrfNv2DLJ43yjHFJm9BJF2KB1iQUZM56Z4pm6myKZn2EgGt9SU1DCw1zHTR6ul7l5JyTDiQmmZakMbRG2g00e8qvZj33
 
 /*   Future<void> initPayment({
     required String email,
