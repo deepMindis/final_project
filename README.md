@@ -1,4 +1,4 @@
-# kraba
+# Hottelo App
 
 A new Flutter project.
 
